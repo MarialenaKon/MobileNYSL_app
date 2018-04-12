@@ -1,0 +1,609 @@
+@media (orientation: portrait) {
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        line-height: 2;
+        color: black;
+        background: #fff;
+        margin: 0;
+        padding: 0;
+        font-size: 13px;
+    }
+    .container {
+        margin: 0 8%;
+        padding: 0;
+    }
+
+    #pageheader {
+        background-color: #009e0f;
+        color: white;
+        margin: 0;
+        padding: 1% 0 1% 2px;
+        height: 54px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    #pageheader h4 {
+        margin-left: 1%;
+        display: inline-block;
+        font-size: 17px;
+        text-align: center;
+        padding: 0 1%;
+    }
+    #logo {
+        display: inline-block;
+        width: 45px;
+        margin: 1%;
+    }
+    #dropdown-btn {
+        background-color: #009e0f;
+        border: none;
+        color: white;
+        margin-left: 5%;
+    }
+
+    .btn-link {
+        font-weight: 400;
+        color: #009e0f;
+        border-radius: 0;
+    }
+
+    #nav {
+        background-color: #dddddd;
+        width: 100%;
+        height: 45px;
+        display: flex;
+        border-bottom: 2px solid #009e0f;
+        justify-content: space-evenly;
+        align-items: center;
+        text-shadow: 1px 1px 2px grey;
+    }
+
+    #nav a {
+        background-color: #dddddd;
+        text-align: center;
+        display: inline-block;
+        font-size: 14px;
+    }
+
+    /*    TRANSITIONS */
+    .in,
+    .out {
+        -webkit-animation-timing-function: ease-in-out;
+        -webkit-animation-duration: 300ms;
+    }
+
+    @-webkit-keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @-webkit-keyframes fade-in-out {
+        from {
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+
+    .fade.in {
+        -webkit-animation-name: fade-in;
+        z-index: 10;
+    }
+
+    .fade.out {
+        z-index: 0;
+    }
+
+    .page-title {
+        margin: 30px 0 20px 0;
+        letter-spacing: 4px;
+        border-bottom: 1px solid grey;
+        text-shadow: 1px 1px 3px grey;
+    }
+
+    #index h4 {
+        font-style: italic;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .indent {
+        margin-top: -1em;
+        margin-left: 1em;
+    }
+
+    a:link {
+        color: black;
+        text-decoration: none;
+    }
+    a:visited {
+        color: black;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #009e0f;
+        text-decoration: none;
+    }
+    a:active {
+        color: #009e0f;
+        text-decoration: none;
+    }
+
+    .selected {
+        color: #009e0f;
+    }
+
+    #accordion {
+        margin-bottom: 3%;
+    }
+
+    .card-body {
+        border: 1px solid grey;
+        padding: 0;
+        border-left: 8px solid #009e0f;
+    }
+
+    .card-header {
+        border: 1px solid grey;
+        border-left: 8px solid #009e0f;
+        padding-left: 7%;
+        background-color: #b6d7a8;
+        letter-spacing: 5px;
+    }
+
+    .table td {
+        text-align: center;
+    }
+
+    .table {
+        margin-bottom: 0px;
+    }
+
+    #game-detail img {
+        display: inline-block;
+        width: 25px;
+        margin-right: 5px;
+        float: left;
+    }
+
+    .chat-btn a {
+        display: inline-block;
+        width: 25px;
+        margin-right: 5px;
+        float: left;
+    }
+
+    iframe {
+        width: 100%;
+    }
+
+    #game-detail p {
+        display: inline;
+        margin: 0;
+    }
+
+    #game-detail div {
+        margin: 3% 0%;
+    }
+
+    #contact a {
+        color: #009e0f;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .shown {
+        display: block;
+    }
+
+    #date,
+    #time,
+    #address {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    #address {
+        margin-bottom: 2%;
+    }
+
+    #address img {
+        align-self: flex-start;
+        padding-top: 1%;
+    }
+
+    #additional-info p {
+        display: block;
+    }
+
+    #additional-info {
+        border: 2px solid #009e0f;
+        padding: 2% 3%;
+        margin-bottom: 5%;
+    }
+
+    .game-title-l {
+        display: none;
+    }
+
+    #chat {
+        margin-bottom: 2%;
+    }
+
+    .message-bubble {
+        padding: 10px 0px 10px 0px;
+    }
+
+    .message-bubble:nth-child(even) {
+
+        background-color: #b6d7a8;
+    }
+
+    .message-bubble > * {
+        padding-left: 10px;
+    }
+
+    .panel-body {
+        padding: 0px;
+    }
+
+    .panel-heading {
+        background-color: #3d6da7 !important;
+        color: white !important;
+    }
+
+
+}
+
+/* end of media query portrait */
+
+@media (orientation: landscape) {
+
+    body {
+        font-family: 'trebuchet ms', sans-serif;
+        line-height: 2;
+        color: black;
+        background: #fff;
+        margin: 0;
+        padding: 0;
+        font-size: 15px;
+    }
+    .container {
+        margin: 0;
+        width: 100%;
+    }
+    .page-header {
+        width: 100%;
+        border-style: none;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    #pageheader {
+        background-color: #009e0f;
+        color: white;
+        margin: 0;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 2px;
+        height: 34px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #pageheader h4 {
+        display: inline-block;
+        font-size: 15px;
+    }
+    #logo {
+        margin: 0 2%;
+        display: inline-block;
+        width: 30px;
+    }
+    #the-dropdown-menu {
+        margin-left: 40%;
+    }
+    #dropdown-btn {
+        background-color: #009e0f;
+        border: none;
+        color: white;
+        margin-left: 5%;
+    }
+    .btn-link {
+        font-weight: 400;
+        color: #009e0f;
+        border-radius: 0;
+    }
+    #nav {
+        background-color: #dddddd;
+        width: 100%;
+        height: 35px;
+        display: flex;
+        border-bottom: 2px solid #009e0f;
+        justify-content: space-evenly;
+        align-items: center;
+        text-shadow: 1px 1px 2px grey;
+    }
+
+    #nav a {
+        background-color: #dddddd;
+        text-align: center;
+        display: inline-block;
+        font-size: 14px;
+    }
+
+    /*    TRANSITIONS */
+    .in,
+    .out {
+        -webkit-animation-timing-function: ease-in-out;
+        -webkit-animation-duration: 300ms;
+    }
+    @-webkit-keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @-webkit-keyframes fade-in-out {
+        from {
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+    .fade.in {
+        -webkit-animation-name: fade-in;
+        z-index: 10;
+    }
+    .fade.out {
+        z-index: 0;
+    }
+
+
+    .bodycontent {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    .page-title {
+        margin: 1.5% 0;
+        letter-spacing: 4px;
+        border-bottom: 1px solid grey;
+        font-size: 20px;
+        text-shadow: 1px 1px 3px grey;
+    }
+    #index {
+        margin: 3%;
+    }
+    #index h4 {
+        font-style: italic;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .indent {
+        margin-top: -1em;
+        margin-left: 1em;
+    }
+    a:link {
+        color: black;
+    }
+    a:visited {
+        color: black;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #009e0f;
+        text-decoration: none;
+    }
+    a:active {
+        color: #009e0f;
+        text-decoration: none;
+    }
+    .selected {
+        color: #009e0f;
+    }
+    /*  HIDING ANNOUNCEMENT ABOUT SATURDAY */
+    .announcement {
+        display: none;
+    }
+
+    #accordion {
+        margin: 3.5% 2% 0 2%;
+        width: 50%;
+    }
+
+    .card-body {
+        border: 1px solid grey;
+        padding: 0;
+        border-left: 8px solid #009e0f;
+    }
+
+    .card-header {
+        border: 1px solid grey;
+        border-left: 8px solid #009e0f;
+        padding-left: 7%;
+        background-color: #b6d7a8;
+        letter-spacing: 5px;
+    }
+
+    .card-header h4 {
+        margin: 2%;
+    }
+
+    .table > tr,
+    td {
+        text-align: center;
+    }
+
+    .table {
+        margin-bottom: 0px;
+    }
+    
+    #game-detail {
+        margin: 2%;
+    }
+    
+    #game-detail img {
+        display: inline-block;
+        width: 20px;
+        margin-right: 5px;
+        float: left;
+    }
+    
+    .chat-btn a {
+        display: inline-block;
+        width: 25px;
+        margin-right: 5px;
+        float: left;
+    }
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        margin: 7.6% 0;
+
+    }
+    #game-detail p {
+        display: inline;
+        margin-bottom: 0;
+    }
+
+    #game-detail div {
+        margin: 0;
+    }
+
+    #contact {
+        margin: 3%;
+    }
+
+    #contact a {
+        color: #009e0f;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    .shown {
+        display: block;
+    }
+    
+    #additional-info {
+        margin: 0 2% 3% 2%;
+        border: 2px solid #009e0f;
+        padding: 2% 3%;
+    }
+    
+    #additional-info p {
+        display: block;
+    }
+
+    #addInfo-l {
+        margin: 3.5% 2%;
+        border: 2px solid #009e0f;
+        padding: 2% 3%;
+        width: 75%;
+    }
+
+    #flex-landscape {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    #teams {
+        margin: 3% 0 1.5% 0;
+    }
+
+    #time, #address, #comment {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    #info-container p {
+        display: inline;
+        flex-wrap: nowrap;
+    }
+
+    #address {
+        margin-bottom: 2%;
+    }
+
+    #info-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    #comment p {
+        margin-right: 5px;
+    }
+
+    #address span {
+        display: none;
+    }
+
+    .game-title-p {
+        display: none;
+    }
+
+    #date {
+        display: none;
+    }
+
+    #info-title {
+        display: none;
+    }
+
+    #chat {
+        margin-bottom: 2% 8%;
+    }
+
+    #chat-title {
+        margin-bottom: 4%
+    }
+
+    .message-bubble {
+        padding: 10px 0px 10px 0px;
+    }
+
+    .message-bubble:nth-child(even) {
+
+        background-color: #b6d7a8;
+    }
+
+    .message-bubble > * {
+        padding-left: 10px;
+    }
+
+    .panel-body {
+        padding: 0px;
+    }
+
+    .panel-heading {
+        background-color: #3d6da7 !important;
+        color: white !important;
+    }

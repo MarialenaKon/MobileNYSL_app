@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Lee Knowlton" />
+    <meta name="description" content="Single page app for NYSL" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="shortcut-icon" sizes="128x128" href="css/images/nysl_logo.png">
+    <link rel="shortcut-icon" sizes="196x196" href="css/images/nysl_logo.png">
+
+    <link rel="apple-touch-icon" href="css/images/nysl_logo.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="css/images/nysl_logo.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="css/images/nysl_logo.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="css/images/nysl_logo.png">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>NYSL - Northside Youth Soccer League</title>
+    <link href="styles/mobile.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+</head>
+
+<body>
+    <script id="game-detail-tmpl" type="text/html">
+        {{#games}}
+        <div id="{{gameId}}" class="hidden">
+
+            <h3 class="text-center page-title game-title-p" id="teams">{{team1}} vs {{team2}}
+            </h3>
+            <h3 class="text-center page-title game-title-l" id="teams">{{team1}} vs {{team2}} &#10072; <span style="font-size:13px; letter-spacing: 0.5px;" class="game-title-l">{{{alt-date}}}</span></h3>
+            <div id="info-container">
+                <a  href="#{{gameIdChat}}" class="chat-btn hidden selected"><input type="image" src="css/images/icons8-chat-30.png" alt="Join chat" id="{{gameIdChatBtn}}">
+                    <p>Write a comment</p>
+                </a>
+                <div id="date"><img src="css/images/icons8-calendar-32%20(1).png">
+                    <p>{{{alt-date}}}</p>
+                </div>
+
+                <div id="time"><img src="css/images/icons8-watch-32.png">
+                    <p>{{time}}</p>
+                </div>
+            </div>
+            <div id="address"><img src="css/images/icons8-stadium-30.png">
+                <p style="float:right overflow:hidden">{{location}}<span>, {{address}}, {{address2}}</span></p>
+            </div>
+
+            <iframe src="{{address_url}}" width="400" height="250" frameborder="0" style="border: 2px solid #dddddd" allowfullscreen></iframe>
+        </div>
+        {{/games}}
+    </script>
+       
+        <script id="chat-tmpl" type="text/html">
+        {{#games}}
+         <div id="{{gameIdChatBtn}}">
+                <h3 class="text-center page-title" id="chat-title">Chat messages</h3>
+                <div class="container">
+                    <div class="row">
+                        <div class="panel panel-default">
+                            <div class="input-group">
+                                <input id="body" type="text" class="form-control">
+                                <span class="input-group-btn">
+                    <button id="create-post" class="btn btn-default" type="button">Send</button>
+                  </span>
+                            </div>
+                            <div class="panel-body">
+                                <div id="posts" class="container">
+                                    <div class="row message-bubble">
+                                        <p class="text-muted">User 1</p>
+                                        <span>Some message</span>
+                                    </div>
+                                    <div class="row message-bubble">
+                                        <p class="text-muted">User 2</p>
+                                        <p>Some other message</p>
+                                    </div>
+                                    <div class="row message-bubble">
+                                        <p class="text-muted">User 1</p>
+                                        <p>Let´s talk</p>
+                                    </div>
+                                    <div class="row message-bubble">
+                                        <p class="text-muted">User 2</p>
+                                        <p>Test message</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+            {{/games}}              
+</script>
+   
+    <div class="container-fluid" id="pageheader">
+        <img class="img-responsive" id="logo" src="css/images/nysl_logo.png">
+
+        <h4>Northside Youth Soccer League</h4>
+
+        <div id="the-dropdown-menu" class="dropdown">
+            <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" id="dropdown-btn"><img src="css/images/icons8-edit-property-30.png" style="width:18px;">
+      <span class="caret"></span></button>
+            <ul class="dropdown-menu dropdown-menu-right" style="color:black;">
+                <li><button id="login" class="btn btn-link btn-md">Log in</button></li>
+                <li><button id="sign-out" class="btn btn-link btn-md">Log out</button></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div id="nav">
+        <a id="btn1" href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span><span> HOME</span></a>
+        <a id="btn2" href="#"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><span> GAME INFO</span></a>
+        <a id="btn3" href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> CONTACT</a>
+    </div>
+
+    <div class="container">
+        <div id="pages">
+            <div id="index">
+                <h3 class="text-center page-title">Upcoming events</h3>
+                <h4>August 4</h4>
+                <p class="indent">NYSL Fundraiser</p>
+                <h4>August 16</h4>
+                <p class="indent">Season Kick-off: Meet the Teams</p>
+                <h4>September 1</h4>
+                <p class="indent"> First Game of the Season (Check Game Schedule for details)</p>
+
+            </div>
+
+            <div id="info">
+                <h3 class="text-center page-title" id="info-title">Fall Schedule</h3>
+                <p class="announcement small" style="font-style: italic">*All games take place on Saturday</p>
+                <div id="flex-landscape">
+                    <div id="accordion" role="tablist">
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingOne">
+                                <h4 class="mb-0">
+                                    <a data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne">
+         SEPTEMBER <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+        </a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseOne" class="collapse in" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body" id="september-table">
+                                    <table class="table">
+                                        <tr>
+                                            <td style="border-top: 0px;">9/01</td>
+                                            <td style="border-top: 0px;">
+                                                <select>
+                <option value="select">Select game</option>                         
+                  <option value="#game-detail1">U1 and U4</option>
+                  <option value="#game-detail2">U3 and U2</option>
+              </select>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>9/08</td>
+                                            <td>
+                                                <select>
+                                                <option value="select">Select game</option> 
+                  <option value="#game-detail3">U5 and U6</option>
+                  <option value="#game-detail4">U6 and U1</option>
+              </select>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>9/15</td>
+                                            <td>
+                                                <select>
+                                                <option value="select">Select game</option> 
+                  <option value="#game-detail5">U2 and U4</option>
+                  <option value="#game-detail6">U3 and U5</option>
+              </select>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td>9/22</td>
+                                            <td>
+                                                <select>
+                                                <option value="select">Select game</option> 
+                  <option value="#game-detail7">U1 and U3</option>
+                  <option value="#game-detail8">U2 and U6</option>
+              </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border-bottom: 0px;">9/29</td>
+                                            <td style="border-bottom: 0px;"><select>
+                                                <option value="select">Select game</option> 
+                  <option value="#game-detail9">U4 and U5</option>
+                  
+              </select></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingTwo">
+                                <h4 class="mb-0">
+                                    <a class="collapsed" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
+          OCTOBER <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+        </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+                                <div class="card-body" id="october-table">
+                                    <table class="table">
+                                        <tr>
+                                            <td style="border-top: 0px;">10/06</td>
+                                            <td style="border-top: 0px;">
+                                                <select>
+                                                <option value="select">Select game</option>
+                                        <option value="#game-detail10">U2 and U5</option>
+                                            <option value="#game-detail11">U1 and U6</option>
+                                    </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>10/08</td>
+                                            <td>
+                                                <select>
+                                                <option value="select">Select game</option>
+                                            <option value="#game-detail12">U3 and U4</option>
+                                            <option value="#game-detail13">U5 and U1</option>
+                                    </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>10/20</td>
+                                            <td>
+                                                <select>
+                                                <option value="select">Select game</option>
+                                            <option value="#game-detail14">U6 and U3</option>
+                                            <option value="#game-detail5">U2 and U4</option>
+                                    </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>10/27</td>
+                                            <td>
+                                                <select>
+                                                <option value="select">Select game</option>
+                                            <option value="#game-detail16">U3 and U1</option>
+                                            <option value="#game-detail17">U5 and U6</option>
+                                    </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div id="game-detail">
+<p>SHow me somethiiiiingggg</p>
+                    </div>
+                </div>
+                <div id="chat">
+                    
+                </div>
+                <div id="additional-info">
+                    <p><strong>Facility Type:</strong> Outdoor</p>
+                    <p><strong>Additional Information:</strong> If deemed necessary by NYSL, games may be shortened or cancelled due to extreme weather conditions.</p>
+                    <p><strong>Please direct all questions to:</strong> Michael Randall, League Coordinator</p>
+                    <p><strong>Phone:</strong> (630) 690-8132</p>
+                    <p><strong>Email:</strong> <a href="mailto:michael.randall@chisoccer.org">michael.randall@chisoccer.org</a></p>
+                </div>
+            </div>
+            <div id="contact">
+
+                <h3 class="text-center page-title">Contact</h3>
+                <p>Please email us at <a href="mailto:nysl@chisoccer.org">nysl@chisoccer.org</a></p>
+                <p>We will reply to your email as soon as we can.</p>
+            </div>
+
+            
+
+            <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+            <script>
+                // Initialize Firebase
+                var config = {
+                    apiKey: "AIzaSyCb_CqZBrMH94xd7ojcAdiZXo_MyxE6nro",
+                    authDomain: "messaging-8be6c.firebaseapp.com",
+                    databaseURL: "https://messaging-8be6c.firebaseio.com",
+                    projectId: "messaging-8be6c",
+                    storageBucket: "",
+                    messagingSenderId: "930907212646"
+                };
+                firebase.initializeApp(config);
+
+            </script>
+
+
+        </div>
+
+    </div>
+
+    <script src="scripts/nysl_script.js"></script>
+</body>
+
+</html>
